@@ -40,6 +40,8 @@ pub struct Window {
     pub vsync: bool,
     pub resizable: bool,
     pub mode: WindowMode,
+    pub cursor_grab: bool,
+    pub cursor_visible: bool,
 }
 
 /// Defines the way a window is displayed
@@ -64,6 +66,8 @@ impl Window {
             vsync: window_descriptor.vsync,
             resizable: window_descriptor.resizable,
             mode: window_descriptor.mode,
+            cursor_grab: window_descriptor.cursor_grab,
+            cursor_visible: window_descriptor.cursor_visible,
         }
     }
 }
@@ -77,7 +81,8 @@ pub struct WindowDescriptor {
     pub vsync: bool,
     pub resizable: bool,
     pub mode: WindowMode,
-
+    pub cursor_grab: bool,
+    pub cursor_visible: bool,
     // this is a manual implementation of the non exhaustive pattern,
     // especially made to allow ..Default::default()
     #[doc(hidden)]
@@ -93,6 +98,8 @@ impl Default for WindowDescriptor {
             vsync: true,
             resizable: true,
             mode: WindowMode::Windowed,
+            cursor_grab: false,
+            cursor_visible: true,
             __non_exhaustive: (),
         }
     }
